@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Thực Hành JavaScript | Nguyễn Thị Huỳnh Giao</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Liên kết CSS theo đúng cấu trúc thư mục css/style.css -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Thanh điều hướng -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <span class="brand-badge">&lt;JS/&gt;</span>
+        <span class="brand-text">WebDev Portfolio</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#thong-tin" class="nav-link">Thông tin</a>
+        <a href="#gioi-thieu" class="nav-link">Mục tiêu</a>
+        <a href="#danh-sach-lab" class="nav-link">Bài Lab</a>
+        <a href="#tong-ket" class="nav-link">Tổng kết</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Đổi giao diện Sáng/Tối" title="Đổi giao diện Sáng/Tối">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button id="mobileMenuBtn" class="icon-btn mobile-only" aria-label="Mở menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 3.1 Thông tin cá nhân (Hero Portfolio) -->
+    <section id="thong-tin" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="greeting-pill">
+            <span class="status-dot"></span>
+            <span id="dynamicGreeting">Xin chào giảng viên và các bạn!</span>
+          </div>
+
+          <!-- CẬP NHẬT THÔNG TIN SINH VIÊN TẠI ĐÂY -->
+          <h1 class="hero-title">
+            Xin chào, mình là <span class="highlight">Nguyễn Thị Huỳnh Giao</span>
+          </h1>
+          <p class="hero-subtitle">
+            Mình là sinh viên ngành Thương mại điện tử. Đây là nơi lưu trữ quá trình học tập và kết quả thực hành lập trình Front-end với JavaScript &amp; jQuery của mình.
+          </p>
+
+          <div class="student-meta">
+            <div class="meta-card">
+              <span class="meta-label">Mã số sinh viên</span>
+              <div class="meta-value-row">
+                <strong id="studentId">31231021714</strong>
+                <button type="button" id="copyIdBtn" class="copy-btn" title="Sao chép MSSV">Sao chép</button>
+              </div>
+            </div>
+
+            <div class="meta-card">
+              <span class="meta-label">Lớp học phần</span>
+              <strong>26C1INF50902701</strong>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#danh-sach-lab" class="btn btn-primary">
+              Xem danh sách 03 bài Lab ↓
+            </a>
+            <!-- THAY ĐƯỜNG DẪN GITHUB CÁ NHÂN CỦA BẠN -->
+            <a
+              href="https://github.com/huynhgiao305/Tuan3/tree/main/JavaScript-Labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub Cá Nhân
+            </a>
+          </div>
+        </div>
+
+        <!-- Khung ảnh đại diện & Thống kê nhanh -->
+        <div class="hero-profile-card">
+          <div class="avatar-wrapper">
+            <!-- BẠN CÓ THỂ THAY SRC BẰNG ẢNH CÁ NHÂN (VD: images/avatar.jpg) -->
+            <img
+              src="https://i.pinimg.com/736x/28/84/41/288441b398e38c263da7a82e14fb22a0.jpg"
+              alt="Ảnh đại diện sinh viên Nguyễn Thị Huỳnh Giao"
+              class="avatar-img"
+            />
+            <span class="avatar-status" title="Sẵn sàng nộp bài">✓</span>
+          </div>
+          <h2 class="profile-name">Nguyễn Thị Huỳnh Giao</h2>
+          <p class="profile-role">Front-end Web Learner</p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-num">03</span>
+              <span class="stat-text">Bài Lab</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">29</span>
+              <span class="stat-text">Exercises</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">100%</span>
+              <span class="stat-text">Hoàn thành</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3.2 Giới thiệu về bài thực hành -->
+    <section id="gioi-thieu" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Tổng quan học phần</span>
+          <h2>Giới thiệu về chuỗi bài thực hành</h2>
+        </div>
+
+        <div class="intro-grid">
+          <article class="info-box">
+            <div class="info-icon">⚡</div>
+            <h3>Vai trò của JavaScript trong phát triển Web</h3>
+            <p>
+              Nếu HTML xây dựng khung cấu trúc và CSS định hình giao diện thẩm mỹ, thì <strong>JavaScript</strong> đóng vai trò là "bộ não" mang lại sự sống động cho website. JavaScript cho phép trang web phản hồi tức thì với thao tác người dùng, kiểm tra tính hợp lệ của dữ liệu ngay tại trình duyệt, thay đổi nội dung linh hoạt mà không cần tải lại trang và kết nối mượt mà với các dịch vụ dữ liệu từ máy chủ.
+            </p>
+          </article>
+
+          <article class="info-box">
+            <div class="info-icon">🎯</div>
+            <h3>Mục tiêu thực hiện 03 bài Lab</h3>
+            <p>
+              Chuỗi thực hành từ <strong>Lab 08 đến Lab 10</strong> giúp nắm vững tư duy lập trình phía client một cách bài bản: khởi đầu từ cú pháp nền tảng, hàm và đối tượng (Lab 08); tiến tới làm chủ cây cấu trúc DOM, cơ chế bắt sự kiện và kiểm tra biểu mẫu (Lab 09); sau đó tối ưu hóa tốc độ phát triển giao diện tương tác, hiệu ứng động và truy vấn AJAX bằng thư viện jQuery (Lab 10).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3.3 Danh sách và liên kết đến các bài Lab -->
+    <section id="danh-sach-lab" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Danh mục thực hành</span>
+          <h2>Danh sách các bài Lab đã hoàn thành</h2>
+          <p class="section-desc">
+            Nhấn vào từng thẻ để truy cập trực tiếp trang bài làm hoặc mở rộng danh sách các Exercise chi tiết.
+          </p>
+        </div>
+
+        <!-- Bộ lọc tương tác bằng JS -->
+        <div class="filter-bar" role="group" aria-label="Lọc bài Lab">
+          <button class="filter-btn active" data-filter="all">Tất cả (3)</button>
+          <button class="filter-btn" data-filter="lab08">Lab 08: Nền tảng JS</button>
+          <button class="filter-btn" data-filter="lab09">Lab 09: DOM &amp; Events</button>
+          <button class="filter-btn" data-filter="lab10">Lab 10: jQuery &amp; AJAX</button>
+        </div>
+
+        <div class="labs-grid">
+          <!-- LAB 08 -->
+          <article class="lab-card" data-category="lab08">
+            <div class="lab-card-top">
+              <span class="lab-badge">Lab 08</span>
+              <span class="lab-time">11 Exercises</span>
+            </div>
+            <h3>JavaScript 1: Language Foundations</h3>
+            <p class="lab-summary">
+              Làm quen với cách nhúng JavaScript (Embedded &amp; External), gỡ lỗi bằng Browser Console, sử dụng các đối tượng có sẵn (String, Date, Math), thao tác mảng, hàm và khởi tạo đối tượng.
+            </p>
+
+            <ul class="topic-tags">
+              <li>Syntax &amp; Console</li>
+              <li>Arrays &amp; Loops</li>
+              <li>Functions as Objects</li>
+              <li>Objects &amp; Constructors</li>
+            </ul>
+
+            <div class="lab-actions">
+              <!-- Liên kết chính dẫn vào thư mục Lab08 -->
+              <a href="https://github.com/huynhgiao305/Tuan3/tree/main/JavaScript-Labs/Lab08" class="btn btn-primary btn-block">
+                Truy cập Lab 08 →
+              </a>
+              <button type="button" class="btn-text toggle-ex-btn" data-target="ex-lab08">
+                Xem danh sách Exercise ▾
+              </button>
+            </div>
+
+            <div id="ex-lab08" class="exercise-drawer hidden">
+              <p class="drawer-title">Các tệp thực hành tiêu biểu:</p>
+              <ul>
+                <li><a href="Lab08/Exercise 8.2-8.5/lab08-walkthrough02.html">Ex 8.2 – 8.5: Embedded, External JS &amp; Console</a></li>
+                <li><a href="Lab08/Exercise 8.6/lab08-walkthrough06.html">Ex 8.6: Built-in Objects (String, Date, Math)</a></li>
+                <li><a href="Lab08/Exercise 8.7/lab08-walkthrough07.html">Ex 8.7: Arrays</a></li>
+                <li><a href="Lab08/Exercise 8.8/lab08-walkthrough08.html">Ex 8.8: JavaScript Functions</a></li>
+                <li><a href="Lab08/Exercise 8.9/lab08-walkthrough09.html">Ex 8.9: Functions As Objects</a></li>
+                <li><a href="Lab08/Exercise 8.10/lab08-walkthrough10.html">Ex 8.10: Creating JavaScript Objects</a></li>
+                <li><a href="Lab08/Exercise 8.11/lab08-walkthrough11.html">Ex 8.11: Arrays Of Objects</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- LAB 09 -->
+          <article class="lab-card" data-category="lab09">
+            <div class="lab-card-top">
+              <span class="lab-badge badge-purple">Lab 09</span>
+              <span class="lab-time">8 Exercises</span>
+            </div>
+            <h3>JavaScript 2: DOM and Events</h3>
+            <p class="lab-summary">
+              Truy xuất và biến đổi cây phần tử HTML qua Document Object Model, lắng nghe sự kiện người dùng (click, mouseover, focus/blur, load), đặt Breakpoint gỡ lỗi và kiểm tra dữ liệu biểu mẫu.
+            </p>
+
+            <ul class="topic-tags">
+              <li>DOM Selection</li>
+              <li>DOM Manipulation</li>
+              <li>Event Listeners</li>
+              <li>Form Validation</li>
+            </ul>
+
+            <div class="lab-actions">
+              <!-- Liên kết chính dẫn vào thư mục Lab09 -->
+              <a href="https://github.com/huynhgiao305/Tuan3/tree/main/JavaScript-Labs/Lab09" class="btn btn-primary btn-block">
+                Truy cập Lab 09 →
+              </a>
+              <button type="button" class="btn-text toggle-ex-btn" data-target="ex-lab09">
+                Xem danh sách Exercise ▾
+              </button>
+            </div>
+
+            <div id="ex-lab09" class="exercise-drawer hidden">
+              <p class="drawer-title">Các tệp thực hành tiêu biểu:</p>
+              <ul>
+                <li><a href="Lab09/Exercise 9.1/lab09-walkthrough01.html">Ex 9.1: Basic DOM Selection</a></li>
+                <li><a href="Lab09/Exercise 9.3/lab09-walkthrough03.html">Ex 9.3: Modifying The DOM</a></li>
+                <li><a href="Lab09/Exercise 9.4/lab09-walkthrough04.html">Ex 9.4: Simple Event Handling</a></li>
+                <li><a href="Lab09/Exercise 9.5-9.6/lab09-walkthrough05.html">Ex 9.5-9.6: MResponding To Load Events &amp; Mouseout Events</a></li>
+                <li><a href="Lab09/Exercise 9.7/lab09-walkthrough07.html">Ex 9.7: Working With Forms</a></li>
+                <li><a href="Lab09/Exercise 9.8/lab09-walkthrough08.html">Ex 9.8: KForm Validation</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- LAB 10 -->
+          <article class="lab-card" data-category="lab10">
+            <div class="lab-card-top">
+              <span class="lab-badge badge-emerald">Lab 10</span>
+              <span class="lab-time">10 Exercises</span>
+            </div>
+            <h3>JavaScript 3: jQuery</h3>
+            <p class="lab-summary">
+              Tích hợp thư viện jQuery (CDN &amp; Local fallback), viết mã ngắn gọn với bộ chọn CSS và cơ chế nối chuỗi (chaining), tạo hiệu ứng chuyển động mượt mà và tải dữ liệu JSON bất đồng bộ.
+            </p>
+
+            <ul class="topic-tags">
+              <li>jQuery Selectors</li>
+              <li>Event Chaining</li>
+              <li>Animations &amp; Hover</li>
+              <li>AJAX &amp; jqXHR</li>
+            </ul>
+
+            <div class="lab-actions">
+              <!-- Liên kết chính dẫn vào thư mục Lab10 -->
+              <a href="https://github.com/huynhgiao305/Tuan3/tree/main/JavaScript-Labs/Lab10" class="btn btn-primary btn-block">
+                Truy cập Lab 10 →
+              </a>
+              <button type="button" class="btn-text toggle-ex-btn" data-target="ex-lab10">
+                Xem danh sách Exercise ▾
+              </button>
+            </div>
+
+            <div id="ex-lab10" class="exercise-drawer hidden">
+              <p class="drawer-title">Các tệp thực hành tiêu biểu:</p>
+              <ul>
+                <li><a href="Lab10/Exercise 10.1-10.2/lab10-walkthrough01.html">Ex 10.1 – 10.2: Set Up jQuery &amp; Basic Selectors</a></li>
+                <li><a href="Lab10/Exercise 10.3/lab10-walkthrough03.html">Ex 10.3: Advanced Selectors</a></li>
+                <li><a href="Lab10/Exercise 10.4/lab10-walkthrough04.html">Ex 10.4: jQuery Listeners</a></li>
+                <li><a href="Lab10/Exercise 10.5/lab10-walkthrough05.html">Ex 10.5: Inserting DOM Elements</a></li>
+                <li><a href="Lab10/Exercise 10.6/lab10-walkthrough06.html">Ex 10.6: Simple jQuery Animation</a></li>
+                <li><a href="Lab10/Exercise 10.7/lab10-walkthrough07.html">Ex 10.7: More jQuery Animation</a></li>
+                <li><a href="Lab10/Exercise 10.8/lab10-walkthrough08.html">Ex 10.8: Complex Animations</a></li>
+                <li><a href="Lab10/Exercise 10.9/lab10-walkthrough09.html">Ex 10.9: Get Requests</a></li>
+                <li><a href="Lab10/Exercise 10.10/lab10-walkthrough10.html">Ex 10.10: jqXHR Handling</a></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tổng kết & Ứng dụng thương mại điện tử -->
+    <section id="tong-ket" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Đúc kết &amp; Vận dụng</span>
+          <h2>Tổng kết quá trình thực hành &amp; Ứng dụng thực tế</h2>
+        </div>
+
+        <div class="reflection-card">
+          <p>
+            Qua ba bài thực hành, mình đã nắm được nền tảng JavaScript từ xử lý mảng, hàm, đối tượng đến thao tác DOM, bắt sự kiện và dùng jQuery kết hợp AJAX. Trong đó, <strong>Lab 09 và Lab 10</strong> hữu ích nhưng cũng khó nhất vì phải làm quen với xử lý bất đồng bộ và gỡ lỗi trên trình duyệt, bù lại giúp giao diện tương tác linh hoạt hơn.
+          </p>
+          <p>
+            Những kiến thức này có thể áp dụng ngay vào <strong>website thương mại điện tử</strong> để kiểm tra dữ liệu biểu mẫu đăng ký/đặt hàng, tự động tính tổng tiền giỏ hàng, tạo hiệu ứng phóng to ảnh sản phẩm khi di chuột (hover preview) hay cập nhật danh sách hàng hóa mượt mà không cần tải lại trang. Sắp tới, mình cần rèn thêm kỹ năng tổ chức mã nguồn gọn gàng và thành thạo công cụ Debug để khắc phục lỗi nhanh hơn.
+          </p>
+
+          <div class="ecommerce-pills">
+            <span>🛒 Tính tiền giỏ hàng</span>
+            <span>📝 Kiểm tra Form đăng ký</span>
+            <span>🔍 Phóng to ảnh sản phẩm</span>
+            <span>🔄 Cập nhật sản phẩm AJAX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chân trang -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 <strong>Nguyễn Thị Huỳnh Giao</strong> – MSSV: 31231021714 | JavaScript Labs Portfolio</p>
+      <a href="#thong-tin" class="back-to-top">Lên đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <!-- Thông báo Toast khi sao chép -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Đã sao chép Mã số sinh viên!</div>
+
+  <!-- Liên kết JavaScript theo đúng cấu trúc thư mục js/main.js -->
+  <script src="js/main.js"></script>
+</body>
+</html>
