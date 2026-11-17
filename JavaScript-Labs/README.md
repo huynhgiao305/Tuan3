@@ -58,7 +58,7 @@ JavaScript-Labs/
 ## 5. Đường dẫn GitHub Pages
 
 
-👉 **Link:** `https://<username>.github.io/JavaScript-Labs/`
+👉 **Link:** `https://huynhgiao305.github.io/Tuan3/`
 
 
 ---
