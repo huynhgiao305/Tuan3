@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <!-- Thiết lập Viewport chuẩn Responsive (Slide 12) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 5: Responsive Web Design (Slide 1 - 23)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f9;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #005f69, #008080);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Nút liên kết GitHub */
+        .github-btn {
+            display: inline-block;
+            background-color: #24292e;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .github-btn:hover {
+            background-color: #444d56;
+        }
+
+        /* Container chính */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Thẻ nội dung */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #e07a3f;
+        }
+
+        .card h2 {
+            color: #005f69;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            margin-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background-color: #eef2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #c7254e;
+            font-size: 14px;
+        }
+
+        /* Layout 2 cột minh họa (Slide 19 - 21) */
+        .grid-2 {
+            display: flex;
+            gap: 20px;
+        }
+
+        .grid-2 .card {
+            flex: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #005f69;
+            color: #fff;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Responsive cho màn hình nhỏ hơn hoặc bằng 768px (Slide 8, 13, 21) */
+        @media only screen and (max-width: 768px) {
+            header h1 {
+                font-size: 22px;
+            }
+
+            .grid-2 {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Chương 5: Advance Front-end — Responsive Web Design</h1>
+        <p>Tóm tắt nội dung bài học | UEH University - BIT</p>
+        <!-- Thay đường dẫn href bên dưới bằng link repository GitHub của bạn -->
+        <a href="https://github.com/username/ten-repository" target="_blank" class="github-btn">
+            Xem mã nguồn trên GitHub
+        </a>
+    </header>
+
+    <main class="container">
+        <!-- Phần 1: Slide 1 - 4 -->
+        <section class="card">
+            <h2>1. Tổng quan & Khái niệm Responsive Web Design</h2>
+            <ul>
+                <li><strong>Nội dung chương:</strong> Responsive Web Design, Twitter Bootstrap, jQuery, Advance JS, Sass và React.</li>
+                <li><strong>Khái niệm RWD:</strong> Kỹ thuật thiết kế web giúp giao diện tự động thích ứng với nhiều kích cỡ màn hình trên các thiết bị khác nhau.</li>
+                <li><strong>Tiêu chuẩn:</strong> Hiển thị toàn màn hình (full screen), không vỡ bố cục, không làm ẩn mất thành phần và người dùng không cần phóng to (zoom) để đọc nội dung.</li>
+            </ul>
+        </section>
+
+        <!-- Phần 2: Slide 5 - 12 -->
+        <div class="grid-2">
+            <section class="card">
+                <h2>2. Các vị trí Responsive thông dụng </h2>
+                <ul>
+                    <li><strong>Responsive Menu:</strong> Thanh menu ngang tự thu gọn thành nút menu (hamburger) trên điện thoại.</li>
+                    <li><strong>Responsive Column:</strong> Các cột nội dung dàn ngang trên máy tính tự xếp chồng thành 1 cột dọc trên màn hình nhỏ.</li>
+                    <li><strong>Responsive Font Size:</strong> Điều chỉnh kích thước chữ linh hoạt theo độ rộng thiết bị.</li>
+                    <li><strong>Responsive Image:</strong> Hình ảnh tự co giãn tỷ lệ để không tràn khỏi khung nhìn.</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2>3. Viewports & Thẻ Meta </h2>
+                <ul>
+                    <li><strong>Viewport:</strong> Vùng cửa sổ trình duyệt dùng để hiển thị nội dung trang web.</li>
+                    <li><strong>Vấn đề:</strong> Trình duyệt di động thường thu nhỏ trang desktop (ví dụ 960px xuống 320px) làm chữ rất khó đọc.</li>
+                    <li><strong>Giải pháp:</strong> Khai báo trong thẻ <code>&lt;head&gt;</code>:<br>
+                        <code>&lt;meta name="viewport" content="width=
