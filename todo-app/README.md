@@ -97,23 +97,4 @@ Lần chạy đầu tiên, file `database/todo.db` được tạo tự động c
 
 Giá trị hợp lệ: `priority` = `low` / `medium` / `high`; `status` = `todo` / `doing` / `done`; `due_date` dạng `YYYY-MM-DD`.
 
-## 8. Hình ảnh minh họa
 
-![Tổng quan](docs/giao-dien-tong-quan.png)
-
-![Di động](docs/giao-dien-di-dong.png)
-
-## 9. Đưa dự án lên GitHub
-
-1. Tạo repository mới (trống) trên https://github.com/new, ví dụ `todo-app`.
-2. Trong thư mục dự án, chạy:
-   ```bash
-   git init
-   git add .
-   git commit -m "TODO App: Node.js + Express + SQLite"
-   git branch -M main
-   git remote add origin https://github.com/<ten-tai-khoan>/todo-app.git
-   git push -u origin main
-   ```
-3. File `.gitignore` đã loại trừ `node_modules/`, `.env` và `database/*.db` nên dữ liệu cá nhân sẽ không bị đưa lên.
-4. Người khác tải về chỉ cần: `npm install` rồi `npm start`.
