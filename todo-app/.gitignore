@@ -1,0 +1,16 @@
+# Thư viện cài đặt
+node_modules/
+
+# Biến môi trường (có thể chứa thông tin riêng)
+.env
+
+# Database cá nhân - không đưa lên GitHub
+database/*.db
+database/*.db-journal
+database/*.db-wal
+database/*.db-shm
+
+# File hệ thống / log
+.DS_Store
+Thumbs.db
+*.log

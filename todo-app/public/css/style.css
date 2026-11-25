@@ -1,0 +1,162 @@
+/* =====================================================
+   style.css - Giao diện Dashboard TODO App
+   ===================================================== */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --todo: #64748b;      /* Cần làm - xám xanh */
+  --doing: #f59e0b;     /* Đang thực hiện - cam */
+  --done: #16a34a;      /* Hoàn thành - xanh lá */
+  --overdue: #dc2626;   /* Quá hạn - đỏ */
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+[hidden] { display: none !important; }
+
+.layout { display: flex; min-height: 100vh; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 250px;
+  background: #1e1b4b;
+  color: #fff;
+  padding: 24px 16px;
+  flex-shrink: 0;
+}
+.logo { font-size: 22px; font-weight: 700; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--primary); display: inline-flex; align-items: center; justify-content: center;
+}
+.menu { display: flex; flex-direction: column; gap: 4px; }
+.menu-item {
+  background: transparent; border: 0; color: #c7d2fe; text-align: left;
+  padding: 11px 14px; border-radius: 8px; font-size: 15px; cursor: pointer;
+}
+.menu-item:hover { background: rgba(255, 255, 255, 0.08); }
+.menu-item.active { background: var(--primary); color: #fff; font-weight: 600; }
+
+/* ---------- Nội dung chính ---------- */
+.main { flex: 1; padding: 28px 32px; min-width: 0; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.topbar h1 { margin: 0; font-size: 26px; }
+.date { margin: 2px 0 0; color: var(--muted); text-transform: capitalize; }
+.view-title { font-size: 20px; margin: 26px 0 14px; }
+.muted { color: var(--muted); }
+
+/* ---------- Nút ---------- */
+.btn {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  padding: 9px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;
+}
+.btn:hover { background: #f3f4f6; }
+.btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-danger { background: var(--overdue); border-color: var(--overdue); color: #fff; font-weight: 600; }
+.btn-danger:hover { background: #b91c1c; }
+
+/* ---------- Thẻ thống kê ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; }
+.card-stat {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 16px 18px; border-left: 5px solid var(--primary);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.card-stat strong { font-size: 30px; line-height: 1.1; }
+.card-label { color: var(--muted); font-size: 14px; }
+.c-todo { border-left-color: var(--todo); }
+.c-doing { border-left-color: var(--doing); }
+.c-done { border-left-color: var(--done); }
+.c-overdue { border-left-color: var(--overdue); }
+
+/* ---------- Thanh tìm kiếm / lọc ---------- */
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.toolbar input[type="search"] { flex: 1 1 220px; }
+.toolbar input, .toolbar select, dialog input, dialog select, dialog textarea {
+  padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 14px; font-family: inherit; background: #fff; color: var(--text);
+}
+.toolbar select:disabled { background: #f3f4f6; color: var(--muted); }
+
+/* ---------- Danh sách công việc ---------- */
+.task-list { display: flex; flex-direction: column; gap: 12px; }
+.task {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 14px 18px; border-left: 5px solid var(--todo);
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+}
+.task.s-doing { border-left-color: var(--doing); }
+.task.s-done { border-left-color: var(--done); }
+.task.is-overdue { border-left-color: var(--overdue); }
+.task.s-done .task-title { text-decoration: line-through; color: var(--muted); }
+.task-info { min-width: 0; flex: 1; }
+.task-title { font-weight: 600; font-size: 16px; word-break: break-word; }
+.task-desc { color: var(--muted); font-size: 14px; margin: 2px 0 8px; word-break: break-word; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; }
+.badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #eef2ff; color: #3730a3; }
+.badge.p-high { background: #fee2e2; color: #b91c1c; }
+.badge.p-medium { background: #fef3c7; color: #92400e; }
+.badge.p-low { background: #dcfce7; color: #166534; }
+.badge.due { background: #f1f5f9; color: #475569; }
+.badge.due.late { background: #fee2e2; color: #b91c1c; }
+.task-actions { display: flex; flex-direction: column; gap: 8px; align-items: stretch; flex-shrink: 0; }
+.task-actions select { padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+.task-actions .row-btn { display: flex; gap: 6px; }
+.task-actions .btn { padding: 6px 12px; font-size: 13px; flex: 1; }
+.empty { text-align: center; color: var(--muted); padding: 40px 10px; background: var(--surface); border-radius: var(--radius); }
+
+/* ---------- Thống kê ---------- */
+.progress { height: 12px; background: #e5e7eb; border-radius: 999px; margin: 18px 0; overflow: hidden; }
+.progress-bar { height: 100%; width: 0; background: var(--done); transition: width 0.4s; }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.chart-box { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
+.chart-box h3 { margin: 0 0 10px; font-size: 16px; }
+.chart-box canvas { max-height: 300px; }
+
+/* ---------- Hộp thoại ---------- */
+dialog { border: 0; border-radius: var(--radius); padding: 24px; width: min(520px, 92vw); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25); }
+dialog::backdrop { background: rgba(15, 23, 42, 0.5); }
+dialog h2 { margin-top: 0; }
+dialog label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+dialog label input, dialog label select, dialog label textarea { display: block; width: 100%; margin-top: 4px; font-weight: 400; }
+dialog .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+.form-error { color: var(--overdue); font-size: 14px; margin: 0 0 8px; }
+
+/* ---------- Thông báo ---------- */
+.toast {
+  position: fixed; right: 20px; bottom: 20px; padding: 12px 18px; border-radius: 10px;
+  color: #fff; background: var(--done); box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(10px); pointer-events: none; transition: 0.25s; z-index: 50; max-width: 85vw;
+}
+.toast.show { opacity: 1; transform: none; }
+.toast.error { background: var(--overdue); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; padding: 12px; }
+  .logo { margin-bottom: 10px; font-size: 18px; }
+  .menu { flex-direction: row; overflow-x: auto; gap: 6px; padding-bottom: 4px; }
+  .menu-item { white-space: nowrap; padding: 8px 12px; font-size: 14px; }
+  .main { padding: 18px 14px; }
+  .topbar h1 { font-size: 22px; }
+  .task { flex-direction: column; }
+  .task-actions { width: 100%; flex-direction: row; }
+  .task-actions select { flex: 1; }
+  dialog .row { grid-template-columns: 1fr; }
+}

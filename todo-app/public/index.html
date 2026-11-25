@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO App - Quản lý công việc</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-icon">✓</span> TODO App</div>
+      <nav class="menu" id="menu">
+        <button class="menu-item active" data-view="overview">Tổng quan</button>
+        <button class="menu-item" data-view="today">Công việc hôm nay</button>
+        <button class="menu-item" data-view="all">Tất cả công việc</button>
+        <button class="menu-item" data-view="done">Công việc đã hoàn thành</button>
+        <button class="menu-item" data-view="overdue">Công việc quá hạn</button>
+        <button class="menu-item" data-view="stats">Thống kê</button>
+      </nav>
+    </aside>
+
+    <!-- ============ NỘI DUNG CHÍNH ============ -->
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="greeting">Xin chào!</h1>
+          <p class="date" id="currentDate"></p>
+        </div>
+        <button class="btn btn-primary" id="btnAdd">+ Thêm công việc</button>
+      </header>
+
+      <!-- 4 thẻ thống kê nhanh -->
+      <section class="cards" id="quickCards">
+        <div class="card-stat"><span class="card-label">Tổng số công việc</span><strong id="cardTotal">0</strong></div>
+        <div class="card-stat c-todo"><span class="card-label">Cần thực hiện</span><strong id="cardTodo">0</strong></div>
+        <div class="card-stat c-doing"><span class="card-label">Đang thực hiện</span><strong id="cardDoing">0</strong></div>
+        <div class="card-stat c-done"><span class="card-label">Đã hoàn thành</span><strong id="cardDone">0</strong></div>
+      </section>
+
+      <!-- Khu vực danh sách công việc -->
+      <section id="listSection">
+        <h2 id="viewTitle" class="view-title">Tổng quan</h2>
+
+        <div class="toolbar">
+          <input type="search" id="searchInput" placeholder="Tìm theo tên công việc..." aria-label="Tìm kiếm">
+          <select id="filterStatus" aria-label="Lọc trạng thái">
+            <option value="">Tất cả trạng thái</option>
+            <option value="todo">Cần làm</option>
+            <option value="doing">Đang thực hiện</option>
+            <option value="done">Hoàn thành</option>
+          </select>
+          <select id="filterPriority" aria-label="Lọc ưu tiên">
+            <option value="">Mọi mức ưu tiên</option>
+            <option value="high">Cao</option>
+            <option value="medium">Trung bình</option>
+            <option value="low">Thấp</option>
+          </select>
+          <input type="date" id="filterDate" aria-label="Lọc theo ngày đến hạn" title="Lọc theo ngày đến hạn">
+          <button class="btn" id="btnClear">Xóa bộ lọc</button>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+      </section>
+
+      <!-- Trang thống kê -->
+      <section id="statsSection" hidden>
+        <h2 class="view-title">Thống kê công việc</h2>
+        <div class="cards">
+          <div class="card-stat"><span class="card-label">Tổng số công việc</span><strong id="sTotal">0</strong></div>
+          <div class="card-stat c-done"><span class="card-label">Đã hoàn thành</span><strong id="sDone">0</strong></div>
+          <div class="card-stat c-doing"><span class="card-label">Đang thực hiện</span><strong id="sDoing">0</strong></div>
+          <div class="card-stat c-todo"><span class="card-label">Chưa bắt đầu</span><strong id="sTodo">0</strong></div>
+          <div class="card-stat c-overdue"><span class="card-label">Quá hạn</span><strong id="sOverdue">0</strong></div>
+          <div class="card-stat"><span class="card-label">Tỷ lệ hoàn thành</span><strong id="sRate">0%</strong></div>
+        </div>
+        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+        <div class="charts">
+          <div class="chart-box">
+            <h3>Công việc theo trạng thái</h3>
+            <canvas id="chartStatus"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Công việc theo mức độ ưu tiên</h3>
+            <canvas id="chartPriority"></canvas>
+          </div>
+        </div>
+        <p id="chartError" class="muted" hidden>Không tải được thư viện Chart.js (cần kết nối Internet) nên chưa hiển thị biểu đồ. Các số liệu ở trên vẫn chính xác.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ HỘP THOẠI THÊM / SỬA ============ -->
+  <dialog id="taskDialog">
+    <form id="taskForm" method="dialog" novalidate>
+      <h2 id="dialogTitle">Thêm công việc</h2>
+      <input type="hidden" id="taskId">
+
+      <label>Tên công việc *
+        <input type="text" id="fTitle" maxlength="200" required>
+      </label>
+      <label>Mô tả
+        <textarea id="fDescription" rows="3" maxlength="1000"></textarea>
+      </label>
+      <div class="row">
+        <label>Ngày đến hạn
+          <input type="date" id="fDue">
+        </label>
+        <label>Mức ưu tiên
+          <select id="fPriority">
+            <option value="low">Thấp</option>
+            <option value="medium" selected>Trung bình</option>
+            <option value="high">Cao</option>
+          </select>
+        </label>
+        <label>Trạng thái
+          <select id="fStatus">
+            <option value="todo" selected>Cần làm</option>
+            <option value="doing">Đang thực hiện</option>
+            <option value="done">Hoàn thành</option>
+          </select>
+        </label>
+      </div>
+      <p id="formError" class="form-error" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="btnCancel">Hủy</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ============ HỘP THOẠI XÁC NHẬN XÓA ============ -->
+  <dialog id="confirmDialog">
+    <h2>Xóa công việc?</h2>
+    <p id="confirmText"></p>
+    <div class="dialog-actions">
+      <button type="button" class="btn" id="btnConfirmNo">Hủy</button>
+      <button type="button" class="btn btn-danger" id="btnConfirmYes">Xóa</button>
+    </div>
+  </dialog>
+
+  <!-- Thông báo -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
